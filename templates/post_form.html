@@ -5,11 +5,11 @@
 
 {% block content %}
 
-    <a href="index.html" class="link">Назад</a>
+    <a href="{{ url_for('page_index') }}" >Назад</a>
 
     <h1>Добавить пост</h1>
 
-    <form action="post_uploaded.html" method="POST" enctype="multipart/form-data">
+    <form action="{{ url_for('page_post_upload') }}" method="POST" enctype="multipart/form-data">
         <p>Картинка к посту</p>
         <div>
             <input type="file" name="picture">
@@ -20,7 +20,7 @@
         </div>
 
         <div>
-            <input type="submit" value="Добавить" class="button">
+            <button type="submit" class="btn btn-primary mt-2">Добавить</button>
         </div>
     </form>
 

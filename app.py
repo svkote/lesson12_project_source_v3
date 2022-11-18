@@ -23,19 +23,19 @@ def page_index():
 @app.route("/list")
 def page_tag():
     """страничка ленты по тегу"""
-    pass
+    return render_template('post_list.html', menu=menu)
 
 
 @app.route("/post", methods=["GET", "POST"])
 def page_post_form():
     """страничка добавления поста"""
-    pass
+    return render_template('post_form.html', menu=menu)
 
 
 @app.route("/post", methods=["POST"])
 def page_post_upload():
     """страничка после добавления поста"""
-    pass
+    return render_template('post_uploaded.html', menu=menu)
 
 
 @app.route("/uploads/<path:path>")

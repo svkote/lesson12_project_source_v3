@@ -5,7 +5,7 @@
 
 {% block content %}
 
-    <a href="index.html" class="link">Назад</a>
+    <a href="{{ url_for('page_index') }}" class="link">Назад</a>
 
     <h1>Посты по запросу "Кот и Хлеб"</h1>
 
@@ -22,6 +22,6 @@
         <p>Описание поста тут </p>
     </div>
     <hr>
-    <a href="post_form.html" class="button btn">Добавить пост</a>
+    <a href="{{ url_for('page_post_form') }}" class="button btn">Добавить пост</a>
 
 {% endblock %}
