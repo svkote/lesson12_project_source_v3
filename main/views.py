@@ -1,4 +1,7 @@
-from flask import Blueprint, render_template, request
+import logging
+from json import JSONDecodeError
+
+from flask import Blueprint, render_template, request, abort
 
 from functions import get_posts_by_word
 from menu import menu
@@ -16,5 +19,11 @@ def main_page():
 @main_blueprint.route('/search')
 def search_page():
     search_word = request.args.get('s', '')
-    posts = get_posts_by_word(search_word)
-    return render_template('post_list.html', search_word=search_word, posts=posts)
+    logging.info(f'Выполняется поиск по слову {search_word}')
+    try:
+        posts = get_posts_by_word(search_word)
+    except FileNotFoundError:
+        abort(404)
+    except JSONDecodeError:
+        return "Ошибка в файле JSON"
+    return render_template('post_list.html', search_word=search_word, posts=posts, menu=menu)

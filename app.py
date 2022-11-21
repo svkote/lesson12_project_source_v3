@@ -1,7 +1,10 @@
+import logging
+
 from flask import Flask, request, render_template, send_from_directory
 
 from loader.views import loader_blueprint
 from main.views import main_blueprint
+from menu import menu
 
 # from functions import ...
 
@@ -10,27 +13,20 @@ UPLOAD_FOLDER = "uploads/images"
 
 app = Flask(__name__)
 
-
 app.register_blueprint(main_blueprint)
 app.register_blueprint(loader_blueprint)
 
+logging.basicConfig(filename='basic.log', level=logging.INFO)
 
-# @app.route("/list")
-# def page_tag():
-#     """страничка ленты по тегу"""
-#     return render_template('post_list.html', menu=menu)
-#
-#
-# @app.route("/post", methods=["GET", "POST"])
-# def page_post_form():
-#     """страничка добавления поста"""
-#     return render_template('post_form.html', menu=menu)
-#
-#
-# @app.route("/post", methods=["POST"])
-# def page_post_upload():
-#     """страничка после добавления поста"""
-#     return render_template('post_uploaded.html', menu=menu)
+
+@app.errorhandler(404)
+def PageNotFound(error):
+    return render_template('page404.html', menu=menu)
+
+
+@app.errorhandler(500)
+def PageNotFound(error):
+    return render_template('page500.html', menu=menu)
 
 
 @app.route("/uploads/<path:path>")
