@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+    Пост добавлен
+{% endblock %}
+
+{% block content %}
+
+    <a href="/" class="link">Назад</a>
+
+    <h1>Пост добавлен!</h1>
+
+    <div class="post">
+        <img src="{{ post.pic }}"
+             width="100%" alt="">
+        <p>{{ post.content }}</p>
+    </div>
+
+    <hr>
+
+    <a href="/post" class="button btn">Добавить еще пост</a>
+
+{% endblock %}

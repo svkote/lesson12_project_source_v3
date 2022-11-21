@@ -17,4 +17,4 @@ def main_page():
 def search_page():
     search_word = request.args.get('s', '')
     posts = get_posts_by_word(search_word)
-
+    return render_template('post_list.html', search_word=search_word, posts=posts)

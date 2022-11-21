@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% block title %}
-    Все посты найденные по запросу "Кот и Хлеб"
+    Все посты найденные по запросу "{{ search_word }}"
 {% endblock %}
 
 {% block content %}
 
-    <a href="{{ url_for('page_index') }}" class="link">Назад</a>
+    <a href="/" class="link">Назад</a>
 
-    <h1>Посты по запросу "Кот и Хлеб"</h1>
+    <h1>Посты по запросу "{{ search_word }}"</h1>
 
     {% for post in posts %}
         <div class="post">
             <img src="{{ post.pic }}"
                  width="100%" alt="">
-            <p>Описание поста тут </p>
+            <p>{{ post.content }}</p>
         </div>
     {% endfor %}
 
@@ -21,6 +21,6 @@
     <hr>
 
 
-    <a href="{{ url_for('page_post_form') }}" class="button btn">Добавить пост</a>
+    <a href="/post_form" class="button btn">Добавить пост</a>
 
 {% endblock %}
