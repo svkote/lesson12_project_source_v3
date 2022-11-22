@@ -1,22 +1,24 @@
 {% extends 'base.html' %}
 {% block title %}
-Главная страница
+    Главная страница
 {% endblock %}
 
 {% block content %}
+    <div class="row row-cols-1">
+        <div class="col">
+            <h1>Поиск постов</h1>
 
-    <h1>Поиск постов</h1>
+            <form action="/search" method="get">
+                <label for="s" class="form-label">По вхождению слова</label>
+                <input type="text" name="s" id="s" class="form-control">
+                <button type="submit" class="btn btn-primary mt-2">Найти</button>
+            </form>
 
-    <form action="/search" method="get">
-        <p>По вхождению слова</p>
-        <input type="text" name="s">
-        <button type="submit" class="btn btn-primary mt-2">Найти</button>
-    </form>
+            <hr>
 
-    <hr>
-
-    <a href="/post" class="button btn">Добавить пост</a>
-
+            <a href="/post" class="button btn">Добавить пост</a>
+        </div>
+    </div>
 {% endblock %}
 
 

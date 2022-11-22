@@ -8,14 +8,18 @@
     <a href="/" class="link">Назад</a>
 
     <h1>Посты по запросу "{{ search_word }}"</h1>
-
-    {% for post in posts %}
-        <div class="post">
-            <img src="{{ post.pic }}"
-                 width="100%" alt="">
-            <p>{{ post.content }}</p>
-        </div>
-    {% endfor %}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for post in posts %}
+            <div class="col">
+                <div class="post card">
+                    <img src="{{ post.pic }}" class="card-img-top" width="100%" alt="">
+                    <div class="card-body">
+                        <p class="card-text">{{ post.content }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 
 
     <hr>
